@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import SearchInput from './SearchInput';
+import { Todo } from './modal';
+import TodoList from './TodoList';
 
-function App() {
+
+const App:React.FC=()=>{
+const [todo,setTodo]=useState<string>('')
+const [todos,setTodos]=useState<Todo[]>([])
+
+function handelAdd(e:React.FormEvent) {
+  e.preventDefault()
+  if(todo){
+    setTodos([...todos,
+      {
+      id:Date.now(),
+      todo:todo,
+      isdone:false
+    }
+  ])
+  setTodo('')
+  }
+}
+console.log(todos)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+     <h5>Todo App with React & TS  </h5>
+     <a target='_blanked' href="https://gerges.ghaly.surge.sh/#/productlist">Check more..</a>
+     <SearchInput todo={todo} setTodo={setTodo} handelAdd={handelAdd}/>
+    <TodoList todos={todos} setTodos={setTodos} />
     </div>
+
   );
+
 }
 
 export default App;

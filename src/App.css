@@ -1,38 +1,142 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+a {
+  text-decoration: none;
+  color: #2b2b2b;
+  font-size: 12px;
+}
+ul {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+.container {
+  padding: 40px 100px;
+}
+@media (max-width: 550px) {
+  .container {
+    padding: 30px;
+  }
+}
+@media (max-width: 750px) {
+  .container {
+    padding: 30px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* SearchInput page */
+.SearchInput {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin: 20px 0;
+
+  border: 1px solid #000000;
+}
+.SearchInput input,
+button {
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  border: 0;
+  font-size: 15px;
+}
+.SearchInput button {
+  width: 100px;
+  background-color: rgb(35, 35, 35);
+  color: white;
+  font-weight: bold;
+}
+.SearchInput button:hover {
+  background-color: rgb(61, 60, 60);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* todos-list-page */
+
+.todos-list {
+  width: 100%;
+  display: grid;
+
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 950px) {
+  .todos-list {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (max-width: 700px) {
+  .todos-list {
+    grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.todo .done {
+  display: none;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(28, 139, 102);
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.todo .done.show {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(28, 139, 102);
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.todos-list li {
+  width: 100%;
+  padding: 50px 20px;
+  font-size: 20px;
+  background-color: #1d1d1d;
+  color: aliceblue;
+}
+.todo .update-filed {
+  padding: 50px 20px;
+  font-size: 20px;
+  height: 100%;
+}
+.todo-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.todo-btns li {
+  font-size: 15px;
+  background-color: #2b2b2b;
+  padding: 15px;
+  cursor: pointer;
+}
+.todo-btns li:first-child:hover {
+  background-color: rgb(28, 139, 102);
+}
+.todo-btns li:last-child:hover {
+  background-color: rgb(139, 28, 28);
+}
+.todo-btns li:nth-child(2):hover {
+  background-color: rgb(144, 127, 0);
 }
